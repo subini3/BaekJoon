@@ -1,18 +1,15 @@
-//input.txt  /dev/stdin
 const fs = require('fs');
-let input = fs.readFileSync('input.txt').toString().trim();
 
-let start = 'A'
-cnt = 0
-for(let i of input){
-    left = i.charCodeAt() - start.charCodeAt();
-    right = start.charCodeAt() - i.charCodeAt();
-    if(left < 0){
-        left += 26;
-    }else if(right < 0){
-        right += 26;
-    }
-    cnt += Math.min(left, right);
-    start = i;
+const input = fs.readFileSync('input.txt').toString().trim().split('\n')
+
+let N = input[0];
+let cost = input[1].split(' ').map(el => Number(el));
+
+cnt = 0;
+for(let i of cost){
+        cnt += i
 }
-console.log(cnt)
+
+console.log(cnt - (Math.max(...cost)))
+
+
